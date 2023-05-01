@@ -21,6 +21,7 @@
     NewsDAO newsDAO = new NewsDAO();
     if (newsList.size() > 0) {
         News active = newsList.get(0);
+        int todayMinusPostDate = LocalDate.now().getDayOfYear() - active.getPostDate().toLocalDate().getDayOfYear();
 %>
 <%
     if (user != null && user.getRole() == 1) {
@@ -60,7 +61,21 @@
                             </small><i class="bi bi-chat-dots"></i><small><%=newsDAO.getCommentsCount(active.getId())%>
                             </small><i class="bi bi-eye"></i><small><%=active.getViews()%>
                             </small></h5>
-                            <small><%=LocalDate.now().getDayOfYear() - active.getPostDate().toLocalDate().getDayOfYear()%> days ago</small>
+                            <%
+                                if (todayMinusPostDate == 0) {
+                            %>
+                            <small>Today</small>
+                            <%
+                                } else if (todayMinusPostDate == 1) {
+                            %>
+                            <small>Yesterday</small>
+                            <%
+                                } else {
+                            %>
+                            <small><%=todayMinusPostDate%> days ago</small>
+                            <%
+                                }
+                            %>
                         </div>
                     </a>
                 </div>
@@ -81,7 +96,21 @@
                             </small><i class="bi bi-chat-dots"></i><small><%=newsDAO.getCommentsCount(active.getId())%>
                             </small><i class="bi bi-eye"></i><small><%=active.getViews()%>
                             </small></h5>
-                            <small><%=LocalDate.now().getDayOfYear() - active.getPostDate().toLocalDate().getDayOfYear()%> days ago</small>
+                            <%
+                                if (todayMinusPostDate == 0) {
+                            %>
+                            <small>Today</small>
+                            <%
+                            } else if (todayMinusPostDate == 1) {
+                            %>
+                            <small>Yesterday</small>
+                            <%
+                            } else {
+                            %>
+                            <small><%=todayMinusPostDate%> days ago</small>
+                            <%
+                                }
+                            %>
                         </div>
                     </a>
                 </div>

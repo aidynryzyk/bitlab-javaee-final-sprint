@@ -29,6 +29,7 @@
                 break;
             }
             News active = newsList.get(j++);
+            int todayMinusPostDate = LocalDate.now().getDayOfYear() - active.getPostDate().toLocalDate().getDayOfYear();
     %>
     <div class="col">
         <div class="card shadow bg-body-tertiary rounded">
@@ -38,7 +39,21 @@
                     <span class="badge rounded-pill text-bg-dark mb-3"><%=newsDAO.getCategoryName(active.getCategoryId())%></span>
                     <h5 class="card-title"><%=active.getTitle()%></h5>
                     <p class="card-text"><%=active.getContent().split("\\.")[0]%></p>
-                    <p class="card-text"><small class="text-body-secondary"><%=LocalDate.now().getDayOfYear() - active.getPostDate().toLocalDate().getDayOfYear()%> days ago</small></p>
+                    <%
+                        if (todayMinusPostDate == 0) {
+                    %>
+                    <p class="card-text"><small class="text-body-secondary">Today</small></p>
+                    <%
+                    } else if (todayMinusPostDate == 1) {
+                    %>
+                    <p class="card-text"><small class="text-body-secondary">Yesterday</small></p>
+                    <%
+                    } else {
+                    %>
+                    <p class="card-text"><small class="text-body-secondary"><%=todayMinusPostDate%> days ago</small></p>
+                    <%
+                        }
+                    %>
                     <p class="card-text"><i class="bi bi-suit-heart"></i><small class="text-body-secondary">  <%=newsDAO.getLikesOfNews(active.getId())%>  </small><i class="bi bi-chat-dots"></i><small class="text-body-secondary">  <%=newsDAO.getCommentsCount(active.getId())%>  </small><i class="bi bi-eye"></i><small class="text-body-secondary">  <%=active.getViews()%>  </small></p>
                 </div>
             </a>

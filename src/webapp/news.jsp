@@ -174,10 +174,6 @@
                 <div>
                     <strong>Sign in to comment</strong>
                 </div>
-                <div>
-                    <small><%=LocalDate.now()%>
-                    </small>
-                </div>
             </div>
             <div class="card-body">
                 <form action="/news" method="post">
@@ -200,10 +196,6 @@
                 <div>
                     <strong><%=user.getFullName()%>
                     </strong>
-                </div>
-                <div>
-                    <small><%=LocalDate.now()%>
-                    </small>
                 </div>
             </div>
             <div class="card-body">
@@ -231,6 +223,7 @@
         <%
             for (Comment comment :
                     comments) {
+                int todayMinusPostDate = LocalDate.now().getDayOfYear() - comment.getPostDate().toLocalDate().getDayOfYear();
         %>
         <div class="card mb-3">
             <div class="card-header d-flex justify-content-between">
@@ -239,8 +232,21 @@
                     </strong>
                 </div>
                 <div>
-                    <small><%=LocalDate.now().getDayOfYear() - comment.getPostDate().toLocalDate().getDayOfYear()%> days ago
-                    </small>
+                    <%
+                        if (todayMinusPostDate == 0) {
+                    %>
+                    <small>Today</small>
+                    <%
+                    } else if (todayMinusPostDate == 1) {
+                    %>
+                    <small>Yesterday</small>
+                    <%
+                    } else {
+                    %>
+                    <small><%=todayMinusPostDate%> days ago</small>
+                    <%
+                        }
+                    %>
                 </div>
             </div>
             <div class="card-body">
