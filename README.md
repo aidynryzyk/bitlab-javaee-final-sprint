@@ -1,0 +1,1 @@
+# News Portal using servlets, jsp, mysql. Bitlab javaee module final sprint.
