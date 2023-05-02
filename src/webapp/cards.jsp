@@ -17,7 +17,7 @@
 </head>
 <body>
 <%
-    int j = 3;
+    int j = 0;
     for (int i = 0; i < 3; i++) {
 %>
 <div class="row mt-3">
