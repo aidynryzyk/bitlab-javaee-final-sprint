@@ -19,7 +19,7 @@
 <div>
     <nav class="navbar navbar-expand-lg fixed-top bg-dark" data-bs-theme="dark">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/news?show=1&page=0">
                 <img src="logo2.png" alt="logo" width="40" height="40">
                 bitlab news
             </a>
