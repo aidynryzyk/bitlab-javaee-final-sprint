@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 01, 2023 at 08:05 AM
+-- Generation Time: May 02, 2023 at 12:53 PM
 -- Server version: 5.7.39
 -- PHP Version: 7.4.33
 
@@ -37,7 +37,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'economics');
+(1, 'Economics'),
+(2, 'Politics'),
+(3, 'Sports');
 
 -- --------------------------------------------------------
 
@@ -62,7 +64,9 @@ INSERT INTO `comments` (`id`, `comment`, `postDate`, `user_id`, `news_id`) VALUE
 (4, 'ye', '2023-04-29', 10, 30),
 (5, 'sultan', '2023-04-29', 10, 30),
 (6, 'today\r\n', '2023-04-29', 10, 30),
-(7, 'today aswell\r\n', '2023-04-29', 10, 30);
+(7, 'today aswell\r\n', '2023-04-29', 10, 30),
+(8, 'cool', '2023-05-02', 10, 48),
+(9, 'wow', '2023-05-02', 10, 50);
 
 -- --------------------------------------------------------
 
@@ -82,7 +86,9 @@ CREATE TABLE `likes` (
 INSERT INTO `likes` (`news_id`, `user_id`) VALUES
 (30, 7),
 (30, 10),
-(39, 10);
+(39, 10),
+(48, 10),
+(50, 10);
 
 -- --------------------------------------------------------
 
@@ -109,7 +115,7 @@ INSERT INTO `news` (`id`, `postDate`, `categoryId`, `title`, `content`, `views`,
 (27, '2023-04-26', 1, 'Title of news 2', 'content. content. content. content.', 4, 'https://picsum.photos/300/200'),
 (28, '2023-04-26', 1, 'Title of news 3', 'content. content. content. content.', 3, 'https://picsum.photos/300/200'),
 (29, '2023-04-26', 1, 'Title of news 4', 'content. content. content. content.', 1, 'https://picsum.photos/300/200'),
-(30, '2023-04-26', 1, 'Title of news 5', 'content. content. content. content.', 71, 'https://picsum.photos/300/200'),
+(30, '2023-04-26', 1, 'Title of news 5', 'content. content. content. content.', 72, 'https://picsum.photos/300/200'),
 (31, '2023-04-26', 1, 'Title of news 6', 'content. content. content. content.', 0, 'https://picsum.photos/300/200'),
 (32, '2023-04-26', 1, 'Title of news 7', 'content. content. content. content.', 0, 'https://picsum.photos/300/200'),
 (33, '2023-04-26', 1, 'Title of news 8', 'content. content. content. content.', 2, 'https://picsum.photos/300/200'),
@@ -125,7 +131,10 @@ INSERT INTO `news` (`id`, `postDate`, `categoryId`, `title`, `content`, `views`,
 (43, '2023-04-28', 1, 'new', 'new', 0, 'https://picsum.photos/300/200'),
 (44, '2023-04-28', 1, 'new', ' new', 0, 'https://picsum.photos/300/200'),
 (46, '2023-04-29', 1, 'HAHA', 'Intro. a;lskdfjasldfjalsdjfals', 15, 'https://picsum.photos/300/200'),
-(47, '2023-04-01', 1, 'old news', 'this is old news. yes.', 1, 'https://picsum.photos/300/200');
+(47, '2023-04-01', 1, 'old news', 'this is old news. yes.', 1, 'https://picsum.photos/300/200'),
+(48, '2023-05-02', 2, 'New politics news', 'Content. New politics news', 103, 'https://picsum.photos/id/1/300/200'),
+(49, '2023-05-01', 2, 'New politics news', 'content. content.', 0, 'https://picsum.photos/id/2/300/200'),
+(50, '2023-05-02', 3, 'New sports news', 'sports.sports.sports.sports.sports.sports.sports.sports.vsports.sports.sports.sports.sports.sports.sports.', 73, 'https://picsum.photos/id/26/300/200');
 
 -- --------------------------------------------------------
 
@@ -174,7 +183,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `fullName`, `roleId`) VALUES
 (7, 'test@test.ru', 'test', 'test', 1),
 (8, 'test@test.ru', 'test', 'test', 1),
 (9, 'test@test.ru', 'test', 'tester', 1),
-(10, 'user@mail.ru', 'user', 'userName', 1);
+(10, 'user@mail.ru', 'user', 'user', 2);
 
 --
 -- Indexes for dumped tables
@@ -229,19 +238,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `roles`
